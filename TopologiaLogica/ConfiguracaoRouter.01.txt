@@ -1,0 +1,44 @@
+09/10/2024
+
+router> enable
+router# configure terminal
+router(config)# interface gigabitEthernet 0/0
+router(config-if)# ip address 192.168.0.1 255.255.255.0
+router(config-if)# no shutdown
+router(config-if)# exit
+
+router(config)# interface gigabitEthernet 1/0
+router(config-if)# ip address 129.0.0.1 255.255.0.0
+router(config-if)# no shutdown
+router(config-if)# exit
+
+router(config)# interface gigabitEthernet 2/0
+router(config-if)# ip address 19.0.0.1 255.0.0.0
+router(config-if)# no shutdown
+router(config-if)# exit
+
+router(config)# interface gigabitEthernet 3/0
+router(config-if)# ip address 223.0.0.1 255.255.255.0
+router(config-if)# no shutdown
+router(config-if)# exit
+
+router(config)# interface gigabitEthernet 4/0
+router(config-if)# ip address 12.0.0.1 255.0.0.0
+router(config-if)# no shutdown
+router(config-if)# exit
+
+show running-config
+
+------------------------------------------------------------------
+11/10/2024				DHCP
+
+router> enable
+router# configure terminal
+router(config)# ip dhcp pool DHCP-TESTE
+router(dhcp-config)# network 192.168.0.0 255.255.255.0
+router(dhcp-config)# default-router 192.168.0.1
+router(dhcp-config)# dns-server 192.168.0.2
+router(dhcp-config)# exit
+router(config)# exit
+router# copy running-config startup-config
+
