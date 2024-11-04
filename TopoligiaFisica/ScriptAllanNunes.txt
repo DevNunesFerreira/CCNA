@@ -1,0 +1,91 @@
+
+enable
+Configure terminal
+hostname R1
+
+interface gigabitEthernet 0/0
+ip address 192.168.10.1 255.255.255.0
+no shutdown
+exit
+
+interface gigabitEthernet 1/0
+ip address 192.168.11.1 255.255.255.0
+no shutdown
+exit
+
+interface gigabitEthernet 2/0
+ip address 192.168.100.1 255.255.255.0
+no shutdown
+exit
+
+interface gigabitEthernet 3/0
+ip address 192.168.101.1 255.255.255.0
+no shutdown
+exit
+
+interface gigabitEthernet 4/0
+ip address 192.168.102.1 255.255.255.0
+no shutdown
+exit
+
+ip dhcp pool Servidores
+network 192.168.10.0 255.255.255.0
+default-router 192.168.10.1
+dns-server 192.168.10.2
+exit
+exit
+
+ip dhcp pool Sala_TI
+network 192.168.11.0 255.255.255.0
+default-router 192.168.11.1
+dns-server 192.168.10.2
+exit
+exit
+
+ip dhcp pool Classe_1
+network 192.168.100.0 255.255.255.0
+default-router 192.168.100.1
+dns-server 192.168.10.2
+exit
+exit
+
+ip dhcp pool Classe_2
+network 192.168.101.0 255.255.255.0
+default-router 192.168.101.1
+dns-server 192.168.10.2
+exit
+exit
+
+ip dhcp pool Classe_3
+network 192.168.102.0 255.255.255.0
+default-router 192.168.102.1
+dns-server 192.168.10.2
+exit
+exit
+
+copy running-config startup-config
+
+------------------------------------------------------------------
+
+enable
+configure terminal
+line console 0
+password senha123
+login
+end
+
+configure terminal
+enable secret senha1234
+exit
+
+-------------------------------------------------------------------
+
+enable 
+configure terminal
+service password-encryption
+
+banner motd #Meu Querido Professor Fernando - Senai -#
+exit
+exit
+
+
